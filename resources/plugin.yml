@@ -1,0 +1,11 @@
+name: LoginTeleport
+version: '${project.version}'
+main: hyoira.loginteleport.LoginTeleport
+api-version: '1.20'
+
+commands:
+  setloginpos:
+    description: "サーバーログイン時のスポーン場所を指定します"
+    permission: loginteleport.setloginpos
+    usage: "/setloginpos"
+    tab-complete: "[op]"
