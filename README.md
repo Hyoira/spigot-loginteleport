@@ -6,5 +6,6 @@
 - Spigot / PaperMC 1.20.4
 
 ## つかいかた
-- 規定のログイン場所にしたい場所に立ち、`/setloginpos` を実行してください
+- [リリースページ](https://github.com/Hyoira/spigot-loginteleport/releases/latest)より jar ファイルをダウンロードし、サーバーの `plugins` ディレクトリに配置する
+- 規定のログイン場所にしたい場所に立ち、`/setloginpos` を実行する
   - コマンドはOP権限があるプレイヤーのみ実行できます
