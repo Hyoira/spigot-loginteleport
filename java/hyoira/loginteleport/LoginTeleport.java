@@ -16,6 +16,10 @@ public final class LoginTeleport extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+        // Config 生成
+        saveDefaultConfig();
+        loadLoginLocation();
+
         // イベントリスナーを登録
         getServer().getPluginManager().registerEvents(this, this);
         getCommand("setloginpos").setExecutor(this);
@@ -45,6 +49,12 @@ public final class LoginTeleport extends JavaPlugin implements Listener {
 
         // コマンドを実行したプレイヤーの位置をログイン位置に設定
         loginLocation = player.getLocation();
+        getConfig().set("loginLocation.world", loginLocation.getWorld().getName());
+        getConfig().set("loginLocation.x", loginLocation.getX());
+        getConfig().set("loginLocation.y", loginLocation.getY());
+        getConfig().set("loginLocation.z", loginLocation.getZ());
+        saveConfig();
+
         player.sendMessage(
                 "ログイン場所を "
                 + loginLocation.getBlockX() + ", "
@@ -52,5 +62,15 @@ public final class LoginTeleport extends JavaPlugin implements Listener {
                 + loginLocation.getBlockZ() + " に指定しました。"
         );
         return true;
+    }
+
+    private void loadLoginLocation() {
+        if (getConfig().contains("loginLocation")) {
+            String worldName = getConfig().getString("loginLocation.world");
+            double x = getConfig().getDouble("loginLocation.x");
+            double y = getConfig().getDouble("loginLocation.y");
+            double z = getConfig().getDouble("loginLocation.z");
+            loginLocation = new Location(getServer().getWorld(worldName), x, y, z);
+        }
     }
 }
