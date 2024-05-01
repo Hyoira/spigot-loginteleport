@@ -14,7 +14,6 @@ public final class LoginTeleport extends JavaPlugin implements Listener {
 
     private Location loginLocation;
 
-    // プラグインが有効化されたときに呼ばれる
     @Override
     public void onEnable() {
         // イベントリスナーを登録
@@ -22,7 +21,6 @@ public final class LoginTeleport extends JavaPlugin implements Listener {
         getCommand("setloginpos").setExecutor(this);
     }
 
-    // プレイヤーがログインしたときに呼ばれる
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
